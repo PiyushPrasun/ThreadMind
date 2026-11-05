@@ -1,4 +1,5 @@
 export interface Env {
+  [key: string]: unknown;
   OPENROUTER_API_KEY: string;
   SUPABASE_URL: string;
   SUPABASE_SECRET_KEY: string;

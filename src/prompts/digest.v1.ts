@@ -5,11 +5,49 @@ export const RESPONSE_SCHEMA = {
   additionalProperties: false,
   required: ["tldr", "tldr_comment_ids", "positions", "strongest_objections", "open_questions", "consensus", "consensus_comment_ids", "suggested_takeaway", "takeaway_comment_ids"],
   properties: {
-    tldr: { type: "string" }, tldr_comment_ids: { type: "array", items: { type: "integer" } },
-    positions: { type: "array", items: { type: "object", additionalProperties: false, required: ["label", "summary", "comment_ids"], properties: { label: { type: "string" }, summary: { type: "string" }, comment_ids: { type: "array", items: { type: "integer" } } } } },
-    strongest_objections: { type: "array", items: { type: "object", additionalProperties: false, required: ["objection", "against", "comment_ids"], properties: { objection: { type: "string" }, against: { type: "string" }, comment_ids: { type: "array", items: { type: "integer" } } } } },
-    open_questions: { type: "array", items: { type: "object", additionalProperties: false, required: ["question", "comment_ids"], properties: { question: { type: "string" }, comment_ids: { type: "array", items: { type: "integer" } } } },
-    consensus: { type: ["string", "null"] }, consensus_comment_ids: { type: "array", items: { type: "integer" } },
-    suggested_takeaway: { type: "string" }, takeaway_comment_ids: { type: "array", items: { type: "integer" } },
+    tldr: { type: "string" },
+    tldr_comment_ids: { type: "array", items: { type: "integer" } },
+    positions: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["label", "summary", "comment_ids"],
+        properties: {
+          label: { type: "string" },
+          summary: { type: "string" },
+          comment_ids: { type: "array", items: { type: "integer" } },
+        },
+      },
+    },
+    strongest_objections: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["objection", "against", "comment_ids"],
+        properties: {
+          objection: { type: "string" },
+          against: { type: "string" },
+          comment_ids: { type: "array", items: { type: "integer" } },
+        },
+      },
+    },
+    open_questions: {
+      type: "array",
+      items: {
+        type: "object",
+        additionalProperties: false,
+        required: ["question", "comment_ids"],
+        properties: {
+          question: { type: "string" },
+          comment_ids: { type: "array", items: { type: "integer" } },
+        },
+      },
+    },
+    consensus: { type: ["string", "null"] },
+    consensus_comment_ids: { type: "array", items: { type: "integer" } },
+    suggested_takeaway: { type: "string" },
+    takeaway_comment_ids: { type: "array", items: { type: "integer" } },
   },
 } as const;

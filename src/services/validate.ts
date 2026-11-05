@@ -1,4 +1,4 @@
-import type { Digest } from "../types";
+import type { Digest } from "../types.js";
 
 export function validateDigest(value: unknown, threadId: number, title: string, allowedIds: Set<number>, analyzed: number, total: number): Digest {
   if (!value || typeof value !== "object") throw new Error("Model response was not an object.");

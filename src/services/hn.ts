@@ -1,4 +1,4 @@
-import type { HNItem } from "../types";
+import type { HNItem } from "../types.js";
 
 export function parseHnId(value: string): number | null {
   const input = value.trim();

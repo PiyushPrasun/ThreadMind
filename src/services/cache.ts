@@ -1,4 +1,4 @@
-import type { Digest, Env } from "../types";
+import type { Digest, Env } from "../types.js";
 
 export async function getCached(env: Env, id: number): Promise<Digest | null> {
   const url = new URL("/rest/v1/digests", env.SUPABASE_URL);

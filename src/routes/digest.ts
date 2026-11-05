@@ -1,11 +1,11 @@
 import { Hono } from "hono";
 import { env as runtimeEnv } from "hono/adapter";
-import type { Env } from "../types";
-import { parseHnId, fetchThread } from "../services/hn";
-import { flattenThread } from "../services/flatten";
-import { generateDigest } from "../services/llm";
-import { getCached, saveCached } from "../services/cache";
-import { reserveGeneration } from "../services/limits";
+import type { Env } from "../types.js";
+import { parseHnId, fetchThread } from "../services/hn.js";
+import { flattenThread } from "../services/flatten.js";
+import { generateDigest } from "../services/llm.js";
+import { getCached, saveCached } from "../services/cache.js";
+import { reserveGeneration } from "../services/limits.js";
 
 export const digestRoute = new Hono<{ Bindings: Env }>();
 digestRoute.post("/api/digest", async c => {

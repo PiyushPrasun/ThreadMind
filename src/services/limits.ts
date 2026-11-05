@@ -1,4 +1,4 @@
-import type { Env } from "../types";
+import type { Env } from "../types.js";
 
 async function hashIp(ip: string): Promise<string> {
   const bytes = new TextEncoder().encode(ip);

@@ -1,9 +1,9 @@
 import { Hono } from "hono";
-import type { Env } from "./types";
-import { health } from "./routes/health";
-import { digestRoute } from "./routes/digest";
-import { pageRoute } from "./routes/page";
-import { homeHtml } from "./templates/home";
+import type { Env } from "./types.js";
+import { health } from "./routes/health.js";
+import { digestRoute } from "./routes/digest.js";
+import { pageRoute } from "./routes/page.js";
+import { homeHtml } from "./templates/home.js";
 
 const app = new Hono<{ Bindings: Env }>();
 app.use("*", async (c, next) => {

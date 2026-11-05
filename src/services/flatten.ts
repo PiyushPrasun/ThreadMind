@@ -1,4 +1,4 @@
-import type { HNItem } from "../types";
+import type { HNItem } from "../types.js";
 
 export interface FlatComment { id: number; author: string; depth: number; text: string; replies: number; }
 

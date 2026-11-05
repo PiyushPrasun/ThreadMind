@@ -1,8 +1,8 @@
 import { Hono } from "hono";
 import { env as runtimeEnv } from "hono/adapter";
-import type { Env } from "../types";
-import { getCached } from "../services/cache";
-import { digestHtml } from "../templates/digest";
+import type { Env } from "../types.js";
+import { getCached } from "../services/cache.js";
+import { digestHtml } from "../templates/digest.js";
 
 export const pageRoute = new Hono<{ Bindings: Env }>();
 pageRoute.get("/hn/:id", async c => {

@@ -1,4 +1,4 @@
-import type { Digest } from "../types";
+import type { Digest } from "../types.js";
 
 const esc = (s: string) => s.replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]!));
 const citations = (ids: number[]) => ids.map(id => `<a class="citation" href="https://news.ycombinator.com/item?id=${id}" target="_blank" rel="noopener noreferrer">#${id}</a>`).join(" ");

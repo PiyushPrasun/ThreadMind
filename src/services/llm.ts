@@ -1,7 +1,7 @@
-import type { Digest, Env } from "../types";
-import type { FlatComment } from "./flatten";
-import { RESPONSE_SCHEMA, SYSTEM_PROMPT } from "../prompts/digest.v1";
-import { validateDigest } from "./validate";
+import type { Digest, Env } from "../types.js";
+import type { FlatComment } from "./flatten.js";
+import { RESPONSE_SCHEMA, SYSTEM_PROMPT } from "../prompts/digest.v1.js";
+import { validateDigest } from "./validate.js";
 
 export async function generateDigest(env: Env, id: number, title: string, comments: FlatComment[], total: number): Promise<Digest> {
   if (!env.OPENROUTER_API_KEY) throw new Error("OpenRouter is not configured. Add OPENROUTER_API_KEY to .env.local or Vercel environment settings.");

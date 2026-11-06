@@ -26,7 +26,7 @@ digestRoute.post("/api/digest", async c => {
     if (quota === "global") return c.json({ error: "Today's free digest limit has been reached. Please come back tomorrow, or browse an example from the homepage." }, 429);
     if (quota === "ip") return c.json({ error: "You've reached today's limit for new digests. Please try again tomorrow." }, 429);
     const result = await generateDigest(config, id, thread.title || "Untitled Hacker News thread", comments, total);
-    await saveCached(config, result, config.OPENROUTER_MODEL || "meta-llama/llama-3.3-70b-instruct:free");
+    await saveCached(config, result, config.OPENROUTER_MODEL || "google/gemma-4-26b-a4b-it:free");
     return c.json({ ...result, cached: false });
   } catch (error) {
     console.error("Digest generation failed", error instanceof Error ? error.message : "unknown error");

@@ -26,7 +26,7 @@ Vercel detects the Hono application from `src/index.ts` and serves files in `pub
 
 ## OpenRouter
 
-The default model is `meta-llama/llama-3.3-70b-instruct:free`. Set `OPENROUTER_MODEL` to another currently available free model if needed. Optional `OPENROUTER_SITE_URL` and `OPENROUTER_APP_NAME` set OpenRouter attribution headers. Free-model availability, context limits, and quotas can change; check the current [OpenRouter free models](https://openrouter.ai/collections/free-models).
+The default model is `google/gemma-4-26b-a4b-it:free`, a free Google Gemma model with structured-output support. Gemini Omni 1.2 Flash is a paid video-generation model, so it does not fit this text-digest API. Set `OPENROUTER_MODEL` to another currently available free chat model if needed. Optional `OPENROUTER_SITE_URL` and `OPENROUTER_APP_NAME` set OpenRouter attribution headers. Free-model availability, context limits, and quotas can change; check the current [OpenRouter free models](https://openrouter.ai/collections/free-models).
 
 ## Quotas and storage
 

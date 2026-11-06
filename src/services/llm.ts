@@ -5,7 +5,7 @@ import { validateDigest } from "./validate.js";
 
 export async function generateDigest(env: Env, id: number, title: string, comments: FlatComment[], total: number): Promise<Digest> {
   if (!env.OPENROUTER_API_KEY) throw new Error("OpenRouter is not configured. Add OPENROUTER_API_KEY to .env.local or Vercel environment settings.");
-  const model = env.OPENROUTER_MODEL || "meta-llama/llama-3.3-70b-instruct:free";
+  const model = env.OPENROUTER_MODEL || "google/gemma-4-26b-a4b-it:free";
   const ids = new Set(comments.map(c => c.id));
   const body = {
     model,

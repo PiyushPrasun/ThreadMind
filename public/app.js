@@ -12,7 +12,7 @@ form.addEventListener('submit', async event => {
     const response = await fetch('/api/digest', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: input.value }) });
     const data = await response.json();
     if (!response.ok) throw new Error(data.error || 'Unable to build this digest.');
-    location.assign(`/hn/${data.thread_id}`);
+    location.assign(`/hn/${data.thread_id}${data.cached ? '?cached=1' : ''}`);
   } catch (error) {
     state.className = 'state error';
     state.textContent = error.message || 'Something went wrong. Please try again.';

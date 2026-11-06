@@ -14,6 +14,8 @@ Hono on Vercel, Supabase Postgres for digest caching and daily quotas, the Hacke
 4. Install dependencies with `npm install`.
 5. Start the local Vercel environment with `npm run dev` and open the URL it prints (usually `http://localhost:3000`).
 
+If you already created the Supabase tables and functions, rerun `supabase/schema.sql` in the SQL Editor after pulling updates; the setup statements are safe to rerun.
+
 ## GitHub and Vercel deployment
 
 1. Create a **private** GitHub repository.

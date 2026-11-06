@@ -11,6 +11,6 @@ pageRoute.get("/hn/:id", async c => {
   try {
     const digest = await getCached(runtimeEnv<Env>(c), id);
     if (!digest) return c.html(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Digest not found — CommentDigest</title><link rel="stylesheet" href="/styles.css"></head><body><header class="site-header"><a class="brand" href="/">Comment<span>Digest</span></a></header><main class="container"><h1>Digest not found</h1><p>This thread has not been digested yet. Generate it from the homepage.</p><a class="button" href="/">Make a digest</a></main></body></html>`, 404);
-    return c.html(digestHtml(digest, new URL(c.req.url).origin));
+    return c.html(digestHtml(digest, new URL(c.req.url).origin, c.req.query("cached") === "1"));
   } catch { return c.text("Digest storage is unavailable. Check the Supabase configuration and schema, then try again.", 503); }
 });

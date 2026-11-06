@@ -66,3 +66,25 @@ $$;
 
 revoke all on function public.reserve_generation(text, integer, integer) from public, anon, authenticated;
 grant execute on function public.reserve_generation(text, integer, integer) to service_role;
+
+-- Return a reserved slot when the model call fails before generating a digest.
+create or replace function public.release_generation(p_ip_hash text)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_day date := (now() at time zone 'utc')::date;
+begin
+  update public.usage
+    set count = greatest(count - 1, 0)
+    where day = v_day and key = p_ip_hash;
+  update public.usage
+    set count = greatest(count - 1, 0)
+    where day = v_day and key = 'global';
+end;
+$$;
+
+revoke all on function public.release_generation(text) from public, anon, authenticated;
+grant execute on function public.release_generation(text) to service_role;

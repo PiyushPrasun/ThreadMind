@@ -19,3 +19,13 @@ export async function reserveGeneration(env: Env, ip: string): Promise<"ok" | "i
   if (result !== "ok" && result !== "ip" && result !== "global") throw new Error("Supabase returned an invalid quota response.");
   return result;
 }
+
+export async function releaseGeneration(env: Env, ip: string): Promise<void> {
+  const ipHash = await hashIp(ip);
+  const response = await fetch(new URL("/rest/v1/rpc/release_generation", env.SUPABASE_URL), {
+    method: "POST",
+    headers: { "apikey": env.SUPABASE_SECRET_KEY, "Content-Type": "application/json" },
+    body: JSON.stringify({ p_ip_hash: ipHash }),
+  });
+  if (!response.ok) throw new Error("Supabase could not release the failed generation quota.");
+}
